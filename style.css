@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 :root {
   --primary-color: #2a5d84;
@@ -14,7 +14,9 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background: #f0f4f8;
+  /* Global background image for all sections */
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #333;
 }
 
@@ -61,20 +63,17 @@ body {
 
 /* Navigation */
 .navbar {
-  position: fixed;
+  position: sticky;
+  top: 5px;
   width: 100%;
-  padding: 20px 50px;
-  background: rgba(255,255,255,0.95);
+  padding: 10px 10px;
+  background: transparent;  /* Transparent so background image shows */
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--primary-color);
+  /* Optional: subtle box-shadow if needed:
+     box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
 }
 .menu-toggle {
   display: none;
@@ -88,15 +87,12 @@ body {
 }
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #fff; /* White for better contrast on background */
   font-weight: 500;
   transition: 0.3s;
-  position: relative;
   padding: 5px;
 }
-.nav-links a:hover {
-  color: var(--accent-color);
-}
+.nav-links a:hover,
 .nav-links a.active {
   color: var(--accent-color);
   border-bottom: 2px solid var(--accent-color);
@@ -104,9 +100,9 @@ body {
 .theme-toggle {
   cursor: pointer;
   font-size: 20px;
-  color: #333;
-  transition: 0.3s;
+  color: #fff;
   margin-left: 20px;
+  transition: 0.3s;
 }
 .theme-toggle:hover {
   color: var(--accent-color);
@@ -132,7 +128,7 @@ body {
   }
 }
 
-/* Hero Section with Parallax Construction Background */
+/* Hero Section */
 .hero {
   height: 100vh;
   position: relative;
@@ -147,8 +143,8 @@ body {
 }
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.5);
@@ -190,7 +186,7 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Blinking Cursor for Typing Effect */
+/* Blinking Cursor */
 #cursor {
   display: inline-block;
   animation: blink 1s infinite;
@@ -211,8 +207,7 @@ section {
   color: var(--primary-color);
 }
 
-
-/* Work Experience, Education, Technical Qualifications */
+/* Content Blocks with 3D Effects */
 .experience-content,
 .education-content,
 .technical-content {
@@ -228,9 +223,14 @@ section {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transform-style: preserve-3d;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+.experience-item:hover,
+.education-item:hover,
+.technical-item:hover {
+  transform: perspective(1000px) rotateY(5deg) rotateX(3deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 .experience-item.visible,
 .education-item.visible,
@@ -255,42 +255,75 @@ section {
 /* Achievements Section */
 #achievements {
   padding: 60px 20px;
-  background: #fff;
+  background: transparent; /* Section title over global background */
 }
-.achievements-container {
+/* White Card Wrapper for Achievement Cards */
+.achievements-card-wrapper {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 50px auto 0;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
 }
-.achievement {
+/* Individual Achievement Cards */
+.achievement-card {
+  flex: 1 1 280px;
   text-align: center;
-  margin: 20px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.achievement .counter {
+.achievement-card:hover {
+  border-radius: 8px;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.achievement-value {
   font-size: 3em;
   font-weight: bold;
-  display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+.achievement-label {
+  font-size: 1.2em;
+  color: #333;
 }
 
-/* Skill Proficiency (Skill Bars) */
+/* Skill Bars (Skill Proficiency) */
 #skillbars {
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: transparent;
 }
-.skillbars-container {
+
+.skillbars-card-wrapper {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto 0;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+.skillbars-card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Each individual skill bar container */
 .skillbar {
   margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
 }
 .skillbar-title {
   font-size: 1.2em;
   margin-bottom: 5px;
 }
+/* Inner progress bar that fills based on the percentage */
 .skillbar-bar {
   width: 0;
   height: 20px;
@@ -299,72 +332,68 @@ section {
   transition: width 1.5s ease-out;
 }
 
-/* About Section as a Card with Side-by-Side Layout */
-.about-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  max-width: 1200px;
-  margin: 20px auto;  /* Vertical margin */
-  display: flex;
-  flex-direction: row; /* Image on the left, text on the right */
-  align-items: center;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* Skill Bars (Skill Proficiency) */
+#skillbars {
+  padding: 60px 20px;
+  background: transparent;
 }
 
-.about-card:hover {
-  transform: translateY(-10px);
+.skillbars-card-wrapper {
+  max-width: 800px;
+  margin: 20px auto 0;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.skillbars-card-wrapper:hover {
+  transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.about-image {
-  flex: 1;
-  text-align: left;
-  padding: 20px;
+/* Each individual skill bar container */
+.skillbar {
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
 }
-
-.about-image img {
-  width: 100%;
-  max-width: 300px;  /* Smaller image size */
-  border-radius: 10px;
-}
-
-.about-text-card {
-  flex: 2;
-  padding: 20px;
+.skillbar-title {
   font-size: 1.2em;
-  line-height: 1.6;
-  opacity: 1; /* Start hidden for fade-in */
-  transition: opacity 1.5s ease-in-out;
+  margin-bottom: 5px;
+}
+/* Inner progress bar that fills based on the percentage */
+.skillbar-bar {
+  width: 0;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 10px;
+  transition: width 1.5s ease-out;
 }
 
-/* When visible, the text container fades in */
-.about-text-card.visible {
-  opacity: 1;
-}
-
-/* Ensure that the title in the About section uses the same style as experience titles */
-.about-text-card h3 {
-  color: var(--primary-color); /* Same as experience h3 color */
-  margin-bottom: 10px;
-}
-
-/* Responsive: Stack the image and text vertically on smaller screens */
-@media (max-width: 768px) {
-  .about-card {
-    flex-direction: row;
-  }
-}
-
-
-
-
-/* FAQ Section (Accordion) styles remain as before */
+/* FAQ Section */
 #faq {
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: transparent;
 }
+
+.faq-card-wrapper {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.faq-card-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
@@ -372,12 +401,13 @@ section {
 .faq-item {
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .faq-question {
   font-size: 1.2em;
   cursor: pointer;
-  position: relative;
   padding-right: 20px;
+  position: relative;
 }
 .faq-question::after {
   content: '+';
@@ -395,14 +425,81 @@ section {
   transition: max-height 0.3s ease;
 }
 .faq-item.active .faq-answer {
-  max-height: 200px; /* Adjust as needed */
+  max-height: 200px;
   margin-top: 10px;
 }
 
-/* (Rest of your CSS remains unchanged) */
 
 
-/* Skills (Text List) Section */
+/* Global Flower Rain Container */
+#flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* allow clicks through */
+  overflow: hidden;
+  z-index: 9999; /* high z-index to appear on top */
+}
+.falling-flower {
+  position: absolute;
+  top: -50px; /* start above the viewport */
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* About Section with 3D Card Effects */
+.about-card {
+  position: relative;
+  z-index: 1;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.about-card:hover {
+  transform: perspective(1000px) rotateY(7deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.about-image {
+  flex: 1;
+  padding: 20px;
+}
+.about-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+.about-text-card {
+  flex: 2;
+  padding: 20px;
+  font-size: 1.2em;
+  line-height: 1.6;
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;
+}
+.about-text-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* Lists (Skills, Languages, Hobbies) */
 .skills-content ul,
 .languages-content ul,
 .hobbies-content ul {
@@ -430,7 +527,7 @@ section {
   transform: translateY(0);
 }
 
-/* Services Section */
+/* Services */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -443,29 +540,27 @@ section {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s, box-shadow 0.5s;
   opacity: 0;
   transform: translateY(50px);
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 .service-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Hover Effects for Card-like Elements */
 .service-card:hover,
 .experience-item:hover,
 .education-item:hover,
 .technical-item:hover,
 .skills-content li:hover,
 .languages-content li:hover,
-.hobbies-content li:hover,
-.about-text:hover {
+.hobbies-content li:hover {
   transform: translateY(-10px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Contact Section */
+/* Contact */
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
@@ -491,13 +586,13 @@ button[type="submit"]:hover {
   background: var(--secondary-color);
 }
 
-/* Dark Mode Styles */
+/* Dark Mode */
 .dark-mode {
   background: #121212;
   color: #f0f0f0;
 }
 .dark-mode .navbar {
-  background: rgba(20, 20, 20, 0.95);
+  background: rgba(20,20,20,0.95);
   box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 .dark-mode .nav-links a {
@@ -524,7 +619,6 @@ button[type="submit"]:hover {
 .dark-mode .theme-toggle {
   color: #f0f0f0;
 }
-
 
 /* Advanced Footer Styles */
 #footer {

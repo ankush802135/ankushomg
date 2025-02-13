@@ -1,298 +1,98 @@
 // Smooth scroll for "Get in Touch" button
-document.getElementById('contactButton').addEventListener('click', function () {
+document.getElementById('contactButton').addEventListener('click', () => {
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 });
 
 // Back-to-top button functionality
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', () => {
   document.getElementById('backToTop').style.display = window.scrollY > 200 ? 'block' : 'none';
 });
-document.getElementById('backToTop').addEventListener('click', function () {
+document.getElementById('backToTop').addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Preloader removal and start hero typing effect on window load
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
   document.getElementById('preloader').style.display = 'none';
   startTyping();
 });
 
 // Scroll progress bar update
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', () => {
   const progressBar = document.getElementById('progress-bar');
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-  progressBar.style.width = scrollPercent + '%';
-});
-
-
-
-// Typing effect for the hero section text
-function startTyping() {
-  const text = "Certified Safety Officer";
-  let i = 0;
-  const speed = 100; // milliseconds per character
-  const typedTextElement = document.getElementById("typed-text");
-  function typeCharacter() {
-    if (i < text.length) {
-      typedTextElement.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeCharacter, speed);
-    }
-  }
-  typeCharacter();
-}
-
-// Generic typing function (used for FAQ answers and About section)
-function typeText(element, text, speed) {
-  let i = 0;
-  element.innerHTML = "";
-  function typeCharacter() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeCharacter, speed);
-    }
-  }
-  typeCharacter();
-}
-
-// Mobile menu toggle functionality
-document.getElementById("mobile-menu").addEventListener("click", function() {
-  document.querySelector(".nav-links").classList.toggle("active");
-});
-
-// Animated Counters in Achievements Section
-function animateCounters() {
-  const counters = document.querySelectorAll(".counter");
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute("data-target");
-      const count = +counter.innerText;
-      const increment = target / 200; // adjust speed if needed
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    updateCount();
-  });
-}
-const achievementsSection = document.getElementById("achievements");
-const achievementsObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounters();
-      achievementsObserver.unobserve(achievementsSection);
-    }
-  });
-}, { threshold: 0.5 });
-achievementsObserver.observe(achievementsSection);
-
-// Animate Skill Bars when Skill Proficiency section is in view
-const skillbarsSection = document.getElementById("skillbars");
-if (skillbarsSection) {
-  const skillbarsObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bars = document.querySelectorAll(".skillbar-bar");
-        bars.forEach(bar => {
-          const percentage = bar.getAttribute("data-percentage");
-          bar.style.width = percentage + "%";
-        });
-        skillbarsObserver.unobserve(skillbarsSection);
-      }
-    });
-  }, { threshold: 0.5 });
-  skillbarsObserver.observe(skillbarsSection);
-}
-
-// FAQ Accordion with Typing Effect for Answers
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
-  const question = item.querySelector('.faq-question');
-  const answer = item.querySelector('.faq-answer');
-  // Initially clear the answer text
-  answer.innerHTML = "";
-  question.addEventListener('click', () => {
-    if (item.classList.contains('active')) {
-      // Collapse and clear the answer
-      item.classList.remove('active');
-      answer.innerHTML = "";
-    } else {
-      // Expand and type out the answer
-      item.classList.add('active');
-      const fullText = answer.getAttribute('data-answer');
-      typeText(answer, fullText, 50); // Adjust typing speed as desired
-    }
-  });
-});
-
-// About Section Typing & Fade-In Effect
-const aboutSection = document.getElementById("about");
-const aboutTitleElement = document.getElementById("about-title");
-const aboutDescriptionElement = document.getElementById("about-description");
-let aboutTypingStarted = false;
-const aboutTitleText = "Safety Officer";
-const aboutDescriptionText = "With over 2 years of experience in construction safety management, I specialize in risk mitigation, emergency planning, and safety audits. My mission is to create safer work environments and ensure regulatory compliance.";
-
-const aboutObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !aboutTypingStarted) {
-      aboutTypingStarted = true;
-      // Add the fade-in class to the text container
-      document.querySelector(".about-text-card").classList.add("visible");
-      // Type the title first
-      typeText(aboutTitleElement, aboutTitleText, 50, function() {
-        // After the title is typed, type the description
-        typeText(aboutDescriptionElement, aboutDescriptionText, 50);
-      });
-    }
-  });
-}, { threshold: 0.5 });
-aboutObserver.observe(aboutSection);
-
-// Generic typing function with an optional callback
-function typeText(element, text, speed, callback) {
-  let i = 0;
-  element.innerHTML = "";
-  function typeCharacter() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeCharacter, speed);
-    } else {
-      if (callback) callback();
-    }
-  }
-  typeCharacter();
-}
-
-
-// Intersection Observer for reveal animations.
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, { threshold: 0.1 });
-// Observe elements to animate on scroll
-document.querySelectorAll(
-  '.about-text, .service-card, .experience-item, .education-item, .technical-item, .skills-content li, .languages-content li, .hobbies-content li'
-).forEach(el => {
-  revealObserver.observe(el);
-});
-
-// Scrollspy for active nav link update
-const navLinks = document.querySelectorAll('.nav-links a.nav-link');
-const sections = document.querySelectorAll('section');
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === entry.target.id) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}, { threshold: 0.6 });
-sections.forEach(section => {
-  navObserver.observe(section);
-});
-
-// Dark mode toggle functionality
-document.getElementById('themeToggle').addEventListener('click', function () {
-  document.body.classList.toggle('dark-mode');
-  const icon = this.querySelector('i');
-  if (document.body.classList.contains('dark-mode')) {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
-
-// Smooth scroll for "Get in Touch" button
-document.getElementById('contactButton').addEventListener('click', function () {
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-});
-
-// Back-to-top button functionality
-window.addEventListener('scroll', function () {
-  document.getElementById('backToTop').style.display = window.scrollY > 200 ? 'block' : 'none';
-});
-document.getElementById('backToTop').addEventListener('click', function () {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Preloader removal and start hero typing effect on window load
-window.addEventListener('load', function () {
-  document.getElementById('preloader').style.display = 'none';
-  startTyping();
-});
-
-// Scroll progress bar update
-window.addEventListener('scroll', function() {
-  const progressBar = document.getElementById('progress-bar');
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-  progressBar.style.width = scrollPercent + '%';
+  progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
 });
 
 // Typing effect for the hero section text
 function startTyping() {
   const text = "Certified Safety Officer | Risk Management Specialist";
   let i = 0;
-  const speed = 100; // milliseconds per character
+  const speed = 100;
   const typedTextElement = document.getElementById("typed-text");
-  function typeCharacter() {
+  (function typeCharacter() {
     if (i < text.length) {
-      typedTextElement.innerHTML += text.charAt(i);
-      i++;
+      typedTextElement.innerHTML += text.charAt(i++);
       setTimeout(typeCharacter, speed);
     }
-  }
-  typeCharacter();
+  })();
 }
 
-// Generic typing function (used for FAQ answers and About section)
+function createFlower() {
+  const flower = document.createElement('div');
+  flower.classList.add('falling-flower');
+  // Use a flower emoji (or replace with an image if desired)
+  flower.textContent = '🌸';
+  // Randomize horizontal position
+  flower.style.left = Math.random() * 100 + '%';
+  // Randomize the size between 20px and 40px
+  flower.style.fontSize = (Math.random() * 20 + 20) + 'px';
+  // Randomize animation duration between 4s and 7s
+  const duration = Math.random() * 3 + 4;
+  flower.style.animationDuration = duration + 's';
+  // Optionally, add a random delay so they don't all fall at once
+  flower.style.animationDelay = Math.random() * 2 + 's';
+
+  // Append the flower to the container in the About section
+  const container = document.getElementById('flower-container');
+  container.appendChild(flower);
+
+  // Remove the flower after its animation completes to clean up the DOM
+  setTimeout(() => {
+    flower.remove();
+  }, duration * 1000);
+}
+
+// Start the flower rain effect (one flower every 500ms)
+setInterval(createFlower, 500);
+
+// Generic typing function with optional callback
 function typeText(element, text, speed, callback) {
   let i = 0;
   element.innerHTML = "";
-  function typeCharacter() {
+  (function typeCharacter() {
     if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
+      element.innerHTML += text.charAt(i++);
       setTimeout(typeCharacter, speed);
-    } else {
-      if (callback) callback();
+    } else if (callback) {
+      callback();
     }
-  }
-  typeCharacter();
+  })();
 }
 
-// Mobile menu toggle functionality
-document.getElementById("mobile-menu").addEventListener("click", function() {
+// Mobile menu toggle
+document.getElementById("mobile-menu").addEventListener("click", () => {
   document.querySelector(".nav-links").classList.toggle("active");
 });
 
-// Animated Counters in Achievements Section
+// Animated Counters for Achievements
 function animateCounters() {
-  const counters = document.querySelectorAll(".counter");
-  counters.forEach(counter => {
+  document.querySelectorAll(".counter").forEach(counter => {
     const updateCount = () => {
       const target = +counter.getAttribute("data-target");
       const count = +counter.innerText;
-      const increment = target / 200; // adjust speed if needed
+      const increment = target / 200;
       if (count < target) {
         counter.innerText = Math.ceil(count + increment);
         setTimeout(updateCount, 20);
@@ -304,108 +104,100 @@ function animateCounters() {
   });
 }
 const achievementsSection = document.getElementById("achievements");
-const achievementsObserver = new IntersectionObserver(entries => {
+new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       animateCounters();
-      achievementsObserver.unobserve(achievementsSection);
+      observer.unobserve(achievementsSection);
     }
   });
-}, { threshold: 0.5 });
-achievementsObserver.observe(achievementsSection);
+}, { threshold: 0.5 }).observe(achievementsSection);
 
-// Animate Skill Bars when Skill Proficiency section is in view
+// Animate Skill Bars
 const skillbarsSection = document.getElementById("skillbars");
 if (skillbarsSection) {
-  const skillbarsObserver = new IntersectionObserver(entries => {
+  new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const bars = document.querySelectorAll(".skillbar-bar");
-        bars.forEach(bar => {
-          const percentage = bar.getAttribute("data-percentage");
-          bar.style.width = percentage + "%";
+        document.querySelectorAll(".skillbar-bar").forEach(bar => {
+          bar.style.width = bar.getAttribute("data-percentage") + "%";
         });
-        skillbarsObserver.unobserve(skillbarsSection);
+        observer.unobserve(skillbarsSection);
       }
     });
-  }, { threshold: 0.5 });
-  skillbarsObserver.observe(skillbarsSection);
+  }, { threshold: 0.5 }).observe(skillbarsSection);
 }
 
-// FAQ Accordion with Typing Effect for Answers
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
+// FAQ Accordion with Typing Effect
+document.querySelectorAll('.faq-item').forEach(item => {
   const question = item.querySelector('.faq-question');
   const answer = item.querySelector('.faq-answer');
-  // Initially clear the answer text
   answer.innerHTML = "";
   question.addEventListener('click', () => {
     if (item.classList.contains('active')) {
-      // Collapse and clear the answer
       item.classList.remove('active');
       answer.innerHTML = "";
+      answer.style.maxHeight = null;
     } else {
-      // Expand and type out the answer
       item.classList.add('active');
       const fullText = answer.getAttribute('data-answer');
       typeText(answer, fullText, 50);
+      answer.style.maxHeight = answer.scrollHeight + "px";
     }
   });
 });
 
-// About Section Typing & Fade-In Effect for Card (Title and Description)
-const aboutSectionEl = document.getElementById("about");
-const aboutTypedEl = document.getElementById("about-typed");
-let aboutTypingInProgress = false;
-const aboutTitleText = "Professional Safety Officer";
-const aboutDescriptionText = "With over 8 years of experience in industrial safety management, I specialize in risk mitigation, emergency planning, and safety audits. My mission is to create safer work environments and ensure regulatory compliance.";
-const aboutObserver = new IntersectionObserver(entries => {
+// About Section Typing & Fade-In
+const aboutSection = document.getElementById("about");
+const aboutTitleElement = document.getElementById("about-title");
+const aboutDescriptionElement = document.getElementById("about-description");
+let aboutTypingStarted = false;
+const aboutTitleText = "Safety Officer";
+const aboutDescriptionText = "With over 2 years of experience in construction safety management, I specialize in risk mitigation, emergency planning, and safety audits. My mission is to create safer work environments and ensure regulatory compliance.";
+new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting && !aboutTypingInProgress) {
-      aboutTypingInProgress = true;
-      // Add the fade-in class to trigger CSS transition
-      aboutTypedEl.classList.add("visible");
-      // First type the title, then after it finishes, type the description.
-      typeText(aboutTypedEl, aboutTitleText + "<br><br>" + aboutDescriptionText, 50, function() {
-        aboutTypingInProgress = false;
+    if (entry.isIntersecting && !aboutTypingStarted) {
+      aboutTypingStarted = true;
+      document.querySelector(".about-text-card").classList.add("visible");
+      typeText(aboutTitleElement, aboutTitleText, 50, () => {
+        typeText(aboutDescriptionElement, aboutDescriptionText, 50);
       });
     }
   });
-}, { threshold: 0.5 });
-aboutObserver.observe(aboutSectionEl);
+}, { threshold: 0.5 }).observe(aboutSection);
 
-// Intersection Observer for reveal animations.
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, { threshold: 0.1 });
+// Reveal animations for various elements
 document.querySelectorAll(
   '.about-text, .service-card, .experience-item, .education-item, .technical-item, .skills-content li, .languages-content li, .hobbies-content li'
 ).forEach(el => {
-  revealObserver.observe(el);
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.1 }).observe(el);
 });
 
 // Scrollspy for active nav link update
 const navLinks = document.querySelectorAll('.nav-links a.nav-link');
-const sections = document.querySelectorAll('section');
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === entry.target.id) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}, { threshold: 0.6 });
-sections.forEach(section => {
-  navObserver.observe(section);
+document.querySelectorAll('section').forEach(section => {
+  new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.6 }).observe(section);
 });
+
+// Dark mode toggle
+document.getElementById('themeToggle').addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+  const icon = this.querySelector('i');
+  if (document.body.classList.contains('dark-mode')) {
+    icon.classList.replace('fa-moon', 'fa-sun');
+  } else {
+    icon.classList.replace('fa-sun', 'fa-moon');
+  }
 });

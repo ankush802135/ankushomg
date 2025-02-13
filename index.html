@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ankush Kumar Ray - Safety Officer</title>
-  <!-- Link to the external CSS file -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Font Awesome (only one version needed) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 <body>
@@ -15,309 +14,322 @@
   <div id="preloader">
     <div class="spinner"></div>
   </div>
-  
+
+
   <!-- Scroll Progress Bar -->
   <div id="progress-container">
     <div id="progress-bar"></div>
   </div>
   
-  <!-- Navigation -->
-  <nav class="navbar">
-    <!-- Mobile menu toggle -->
-    <div class="menu-toggle" id="mobile-menu">
-      <i class="fas fa-bars"></i>
-    </div>
-    <div class="nav-links">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#experience" class="nav-link">Work Experience</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#technical" class="nav-link">Technical Qualifications</a>
-      <a href="#achievements" class="nav-link">Achievements</a>
-      <a href="#skillbars" class="nav-link">Skill Proficiency</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#languages" class="nav-link">Languages</a>
-      <a href="#hobbies" class="nav-link">Hobbies</a>
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
+  <!-- Main Container with 3D perspective -->
+  <div id="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
       </div>
-    </div>
-  </nav>
-  
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <!-- Dark overlay -->
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Ankush Kumar Ray</h1>
-      <!-- Typing effect for hero subtitle -->
-      <p><span id="typed-text"></span><span id="cursor">|</span></p>
-      <button class="cta-button" id="contactButton">Get in Touch</button>
-    </div>
-  </section>
-  
-  <!-- About Section as a Card (Image on the left, Text on the right) -->
+      <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Work Experience</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#technical" class="nav-link">Technical Qualifications</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#skillbars" class="nav-link">Skill Proficiency</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#languages" class="nav-link">Languages</a>
+        <a href="#hobbies" class="nav-link">Hobbies</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <div class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Ankush Kumar Ray</h1>
+        <p><span id="typed-text"></span><span id="cursor">|</span></p>
+        <button class="cta-button" id="contactButton">Get in Touch</button>
+      </div>
+    </section>
+    
+    <!-- About Section -->
   <section id="about">
+    <!-- Flower Rain Container (falls on top of everything in About) -->
+    <div id="flower-container"></div>
     <h2 class="section-title">About Me</h2>
     <div class="about-card">
       <div class="about-image">
         <img src="ankush.jpg" alt="Ankush Kumar Ray" loading="lazy" />
       </div>
       <div class="about-text-card">
-        <!-- Title and description will be typed out here -->
         <h3 id="about-title"></h3>
         <div id="about-description"></div>
       </div>
     </div>
   </section>
-  
-  <!-- Work Experience Section -->
-  <section id="experience">
-    <h2 class="section-title">Work Experience</h2>
-    <div class="experience-content">
-      <div class="experience-item">
-        <h3>Safety Officer</h3>
-        <span>Afcons Infrastructure Limited – Ahmedabad | July 2023 – Sep 2024</span>
-        <p>
-          <strong>Project:</strong> Ahmedabad Metro Elevated C1<br />
-          • Manage permit processes to ensure that all necessary safety approvals are obtained before work begins.<br />
-          • Conduct site inspections to ensure workplace safety.<br />
-          • Monitor compliance with safety regulations and company policies.<br />
-          • Conduct safety training to educate workers on safety protocols and hazard prevention.<br />
-          • Lead contractor meetings to discuss safety protocols and ensure project standards are met.<br />
-          • Conduct toolbox talks to reinforce safety practices and address hazards.
-        </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Educational Qualifications Section -->
-  <section id="education">
-    <h2 class="section-title">Educational Qualifications</h2>
-    <div class="education-content">
-      <div class="education-item">
-        <h3>Bachelor of Commerce</h3>
-        <span>V.K.S.U. University – Arah (Bihar) | Dec 2020 – Sep 2023</span>
-        <p>Completed undergraduate studies in commerce with a focus on business and finance.</p>
-      </div>
-      <div class="education-item">
-        <h3>Intermediate</h3>
-        <span>B.S.E.B. Patna (Bihar) | Mar 2017 – Dec 2019</span>
-        <p>Studied intermediate subjects with a focus on science and mathematics.</p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Technical Qualifications Section -->
-  <section id="technical">
-    <h2 class="section-title">Technical Qualifications</h2>
-    <div class="technical-content">
-      <div class="technical-item">
-        <h3>Advance Diploma In Fire &amp; Industrial Safety Engineering</h3>
-        <span>NIFSE Institute – Nagpur (Maharashtra) | July 2023 – June 2024</span>
-        <p>Advanced diploma focusing on fire safety and industrial safety protocols.</p>
-      </div>
-      <div class="technical-item">
-        <h3>D.C.A. (Diploma In Computer Application)</h3>
-        <span>Awasar Foundation, Buxar (Bihar) | Dec 2015 – Sep 2016</span>
-        <p>Diploma covering computer applications and IT fundamentals.</p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Achievements Section (Animated Counters) -->
-  <section id="achievements">
-    <h2 class="section-title">Achievements</h2>
-    <div class="achievements-container">
-      <div class="achievement">
-        <span class="counter" data-target="2">0</span>
-        <p>Years of Experience</p>
-      </div>
-      <div class="achievement">
-        <span class="counter" data-target="2">0</span>
-        <p>Projects Completed</p>
-      </div>
-      <div class="achievement">
-        <span class="counter" data-target="80">0</span>
-        <p>Safety Trainings</p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Skill Proficiency Section (Animated Skill Bars) -->
-  <section id="skillbars">
-    <h2 class="section-title">Skill Proficiency</h2>
-    <div class="skillbars-container">
-      <div class="skillbar">
-        <div class="skillbar-title">Permit To Work</div>
-        <div class="skillbar-bar" data-percentage="90"></div>
-      </div>
-      <div class="skillbar">
-        <div class="skillbar-title">Ms Office</div>
-        <div class="skillbar-bar" data-percentage="80"></div>
-      </div>
-      <div class="skillbar">
-        <div class="skillbar-title">Site Inspection</div>
-        <div class="skillbar-bar" data-percentage="85"></div>
-      </div>
-      <div class="skillbar">
-        <div class="skillbar-title">Safety Training</div>
-        <div class="skillbar-bar" data-percentage="95"></div>
-      </div>
-      <div class="skillbar">
-        <div class="skillbar-title">Audit Handling</div>
-        <div class="skillbar-bar" data-percentage="90"></div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- FAQ Section (Accordion with Typing Effect for Skill-Related Answers) -->
-  <section id="faq">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question">How do you manage work permits effectively?</div>
-        <div class="faq-answer" data-answer="I prepare and manage work permits meticulously, ensuring that all necessary safety measures and regulatory guidelines are strictly followed."></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">What is your approach to site inspections?</div>
-        <div class="faq-answer" data-answer="I conduct thorough site inspections to identify potential hazards, assess safety conditions, and ensure a secure working environment."></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">How do you deliver effective safety training?</div>
-        <div class="faq-answer" data-answer="I design and deliver engaging training sessions that educate employees on safety protocols, emergency procedures, and risk mitigation strategies."></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">How do you handle safety audits?</div>
-        <div class="faq-answer" data-answer="I manage safety audits by identifying risk areas, ensuring compliance with regulatory standards, and implementing corrective measures promptly."></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">How do you conduct effective toolbox talks?</div>
-        <div class="faq-answer" data-answer="I regularly conduct toolbox talks to communicate vital safety procedures, address immediate hazards, and reinforce a culture of safety on-site."></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills (Text List) Section -->
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-content">
-      <ul>
-        <li><strong>Permit To Work:</strong> Preparation and management of work permits to ensure safety compliance.</li>
-        <li><strong>Ms Office:</strong> Proficient in Microsoft Office tools for documentation and reporting.</li>
-        <li><strong>Site Inspection:</strong> Conducting detailed site inspections to assess safety conditions.</li>
-        <li><strong>Safety Training:</strong> Delivering effective training sessions on safety protocols.</li>
-        <li><strong>Audit Handling:</strong> Managing safety audits and identifying risk areas.</li>
-        <li><strong>Training:</strong> Developing and delivering training programs to enhance safety awareness.</li>
-        <li><strong>Daily Monthly Report:</strong> Compiling comprehensive reports for daily and monthly performance monitoring.</li>
-        <li><strong>Compliance Monitor:</strong> Ensuring adherence to safety regulations and internal policies.</li>
-        <li><strong>Toolbox Talks:</strong> Conducting on-site safety briefings to address immediate hazards.</li>
-        <li><strong>Vehicle Inspection:</strong> Regularly inspecting vehicles for operational safety.</li>
-        <li><strong>Contractors Meeting:</strong> Coordinating meetings with contractors to enforce safety standards.</li>
-        <li><strong>PPEs Monitor:</strong> Overseeing the proper use and availability of personal protective equipment.</li>
-        <li><strong>Making of HIRA &amp; JSA:</strong> Conducting Hazard Identification &amp; Risk Assessments and Job Safety Analyses.</li>
-        <li><strong>Electric Inspection:</strong> Inspecting electrical systems to ensure safe operations.</li>
-        <li><strong>First-Aid Coordination:</strong> Organizing first-aid measures and emergency response protocols.</li>
-      </ul>
-    </div>
-  </section>
-  
-  <!-- Languages Section -->
-  <section id="languages">
-    <h2 class="section-title">Languages</h2>
-    <div class="languages-content">
-      <ul>
-        <li>Hindi</li>
-        <li>English</li>
-      </ul>
-    </div>
-  </section>
-  
-  <!-- Hobbies Section -->
-  <section id="hobbies">
-    <h2 class="section-title">Hobbies</h2>
-    <div class="hobbies-content">
-      <ul>
-        <li>Photography</li>
-        <li>Video Games</li>
-        <li>Kabaddi</li>
-      </ul>
-    </div>
-  </section>
-  
-  <!-- Services Section -->
-  <section id="services">
-    <h2 class="section-title">Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Workplace Safety Audit</h3>
-        <p>
-          Comprehensive safety assessments and risk analysis to identify potential hazards and ensure a safe working environment.
-        </p>
-      </div>
-      <div class="service-card">
-        <h3>Safety Training</h3>
-        <p>
-          Customized training programs designed to educate employees on best practices and safety protocols.
-        </p>
-      </div>
-      <div class="service-card">
-        <h3>Emergency Planning</h3>
-        <p>
-          Development and implementation of emergency response plans to ensure preparedness in critical situations.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Name" required />
-      <input type="email" placeholder="Email" required />
-      <textarea rows="5" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-    <!-- Advanced Footer Section -->
-  <footer id="footer">
-    <div class="footer-container">
-      <div class="footer-columns">
-        <!-- Quick Links Column -->
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+    
+    <!-- Work Experience -->
+    <section id="experience">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="experience-content">
+        <div class="experience-item">
+          <h3>Safety Officer</h3>
+          <span>Afcons Infrastructure Limited – Ahmedabad | July 2023 – Sep 2024</span>
+          <p>
+            <strong>Project:</strong> Ahmedabad Metro Elevated C1<br />
+            • Manage permit processes to ensure all necessary safety approvals are obtained.<br />
+            • Conduct site inspections to ensure workplace safety.<br />
+            • Monitor compliance with safety regulations and company policies.<br />
+            • Deliver safety training and lead toolbox talks.<br />
+            • Coordinate contractor meetings to enforce project standards.
+          </p>
         </div>
-        <!-- Social Links Column -->
-        <div class="footer-column">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="https://discord.gg/8bZBX8eY8w" target="_blank" aria-label="Facebook">
-              <i class="fab fa-discord"></i>
-            </a>
-            <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://linkedin.com/in/ankush-kumar-ray-541921295?" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://instagram.com/ankushray80" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
+      </div>
+    </section>
+    
+    <!-- Educational Qualifications -->
+    <section id="education">
+      <h2 class="section-title">Educational Qualifications</h2>
+      <div class="education-content">
+        <div class="education-item">
+          <h3>Bachelor of Commerce</h3>
+          <span>V.K.S.U. University – Arah (Bihar) | Dec 2020 – Sep 2023</span>
+          <p>Undergraduate studies with a focus on business and finance.</p>
+        </div>
+        <div class="education-item">
+          <h3>Intermediate</h3>
+          <span>B.S.E.B. Patna (Bihar) | Mar 2017 – Dec 2019</span>
+          <p>Focused on science and mathematics.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Technical Qualifications -->
+    <section id="technical">
+      <h2 class="section-title">Technical Qualifications</h2>
+      <div class="technical-content">
+        <div class="technical-item">
+          <h3>Advance Diploma In Fire &amp; Industrial Safety Engineering</h3>
+          <span>NIFSE Institute – Nagpur (Maharashtra) | July 2023 – June 2024</span>
+          <p>Focused on fire safety and industrial protocols.</p>
+        </div>
+        <div class="technical-item">
+          <h3>D.C.A. (Diploma In Computer Application)</h3>
+          <span>Awasar Foundation, Buxar (Bihar) | Dec 2015 – Sep 2016</span>
+          <p>Diploma in computer applications and IT fundamentals.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Achievements -->
+    <section id="achievements">
+      <h2 class="section-title">Achievements</h2>
+      <div class="achievements-card-wrapper">
+        <div class="achievement-card">
+          <div class="achievement-value">
+            <span class="counter" data-target="2">0</span>
           </div>
+          <div class="achievement-label">Years of Experience</div>
         </div>
-        <!-- Contact Info Column -->
+        <div class="achievement-card">
+          <div class="achievement-value">
+            <span class="counter" data-target="2">0</span>
+          </div>
+          <div class="achievement-label">Projects Completed</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-value">
+            <span class="counter" data-target="80">0</span>
+          </div>
+          <div class="achievement-label">Safety Trainings</div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section id="skillbars">
+      <h2 class="section-title">Skill Proficiency</h2>
+      <!-- White Card Wrapper for Skill Proficiency -->
+      <div class="skillbars-card-wrapper">
+        <div class="skillbar">
+          <div class="skillbar-title">Permit To Work</div>
+          <div class="skillbar-bar" data-percentage="90"></div>
+        </div>
+        <div class="skillbar">
+          <div class="skillbar-title">Ms Office</div>
+          <div class="skillbar-bar" data-percentage="80"></div>
+        </div>
+        <div class="skillbar">
+          <div class="skillbar-title">Site Inspection</div>
+          <div class="skillbar-bar" data-percentage="85"></div>
+        </div>
+        <div class="skillbar">
+          <div class="skillbar-title">Safety Training</div>
+          <div class="skillbar-bar" data-percentage="95"></div>
+        </div>
+        <div class="skillbar">
+          <div class="skillbar-title">Audit Handling</div>
+          <div class="skillbar-bar" data-percentage="90"></div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    <section id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <!-- White Card Wrapper for FAQ -->
+      <div class="faq-card-wrapper">
+        <div class="faq-item">
+          <div class="faq-question">How do you manage work permits effectively?</div>
+          <div class="faq-answer" data-answer="I prepare and manage work permits meticulously, ensuring that all necessary safety measures and regulatory guidelines are strictly followed."></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What is your approach to site inspections?</div>
+          <div class="faq-answer" data-answer="I conduct thorough site inspections to identify hazards, assess safety conditions, and ensure a secure working environment."></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do you deliver effective safety training?</div>
+          <div class="faq-answer" data-answer="I design engaging training sessions on safety protocols, emergency procedures, and risk mitigation strategies."></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do you handle safety audits?</div>
+          <div class="faq-answer" data-answer="I identify risk areas, ensure compliance with standards, and implement corrective measures promptly."></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do you conduct effective toolbox talks?</div>
+          <div class="faq-answer" data-answer="I hold regular toolbox talks to communicate safety procedures, address hazards, and reinforce a safety culture on-site."></div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- Skills (Text List) -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-content">
+        <ul>
+          <li><strong>Permit To Work:</strong> Preparation and management to ensure safety compliance.</li>
+          <li><strong>Ms Office:</strong> Proficient with documentation and reporting.</li>
+          <li><strong>Site Inspection:</strong> Detailed assessments of safety conditions.</li>
+          <li><strong>Safety Training:</strong> Effective delivery of safety protocols.</li>
+          <li><strong>Audit Handling:</strong> Identifying risks and ensuring compliance.</li>
+          <li><strong>Training:</strong> Developing programs to boost safety awareness.</li>
+          <li><strong>Daily Monthly Report:</strong> Compiling performance reports.</li>
+          <li><strong>Compliance Monitor:</strong> Ensuring adherence to regulations.</li>
+          <li><strong>Toolbox Talks:</strong> On-site briefings to address hazards.</li>
+          <li><strong>Vehicle Inspection:</strong> Regular operational safety checks.</li>
+          <li><strong>Contractors Meeting:</strong> Coordinating to enforce safety standards.</li>
+          <li><strong>PPEs Monitor:</strong> Overseeing personal protective equipment use.</li>
+          <li><strong>Making of HIRA &amp; JSA:</strong> Conducting hazard and risk assessments.</li>
+          <li><strong>Electric Inspection:</strong> Ensuring safe electrical operations.</li>
+          <li><strong>First-Aid Coordination:</strong> Organizing emergency response protocols.</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Languages Section -->
+    <section id="languages">
+      <h2 class="section-title">Languages</h2>
+      <div class="languages-content">
+        <ul>
+          <li>Hindi</li>
+          <li>English</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+      <h2 class="section-title">Hobbies</h2>
+      <div class="hobbies-content">
+        <ul>
+          <li>Photography</li>
+          <li>Video Games</li>
+          <li>Kabaddi</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services">
+      <h2 class="section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Workplace Safety Audit</h3>
+          <p>
+            Comprehensive safety assessments to identify hazards and ensure a secure environment.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Safety Training</h3>
+          <p>
+            Customized programs to educate employees on safety protocols.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Emergency Planning</h3>
+          <p>
+            Development and implementation of emergency response plans.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required />
+        <input type="email" placeholder="Email" required />
+        <textarea rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+    
+     <!-- Advanced Footer Section -->
+     <footer id="footer">
+      <div class="footer-container">
+        <div class="footer-columns">
+          <!-- Quick Links Column -->
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Me</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <!-- Social Links Column -->
+          <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="https://discord.gg/8bZBX8eY8w" target="_blank" aria-label="Facebook">
+                <i class="fab fa-discord"></i>
+              </a>
+              <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://linkedin.com/in/ankush-kumar-ray-541921295?" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://instagram.com/ankushray80" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Info Column -->
         <div class="footer-column">
           <h3>Contact Info</h3>
           <ul class="contact-info">
@@ -332,9 +344,12 @@
       </div>
     </div>
   </footer>
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop">↑</button>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">↑</button>
+  </div>
   
-  <!-- Link to the external JavaScript file -->
+  <!-- External JavaScript -->
   <script src="script.js"></script>
-
+</body>
+</html>
