@@ -27,7 +27,7 @@ window.addEventListener('scroll', () => {
 
 // Typing effect for the hero section text
 function startTyping() {
-  const text = "Certified Safety Officer | Risk Management Specialist";
+  const text = "Certified Safety Officer";
   let i = 0;
   const speed = 100;
   const typedTextElement = document.getElementById("typed-text");
